@@ -59,7 +59,7 @@ class ldap_auth(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template('auth_ldap/pam_ldap.conf.erb'),
+    content => template('ldap_auth/pam_ldap.conf.erb'),
     require => Package[$ldap_packages],
   }
 

@@ -12,7 +12,7 @@ class ldap_auth(
   validate_bool($configure_nss)
   validate_bool($configure_pam)
 
-  package { $ldap_packages:
+  package { $packages:
     ensure => $package_version,
   }
 
@@ -49,7 +49,7 @@ class ldap_auth(
     group   => 'root',
     mode    => '0644',
     content => $nss_content,
-    require => Package[$ldap_packages],
+    require => Package[$packages],
     notify  => $nss_notify,
   }
 
@@ -60,7 +60,7 @@ class ldap_auth(
     group   => 'root',
     mode    => '0644',
     content => template('ldap_auth/pam_ldap.conf.erb'),
-    require => Package[$ldap_packages],
+    require => Package[$packages],
   }
 
   # Control nslcd service

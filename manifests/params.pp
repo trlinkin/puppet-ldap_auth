@@ -3,13 +3,13 @@ class ldap_auth::params{
   case $osfamily {
     'RedHat': {
       if $operatingsystemrelease >= 6 {
-        $packages      = ['nss-pam-ldap','pam-ldap']
+        $packages      = ['nss-pam-ldapd','pam_ldap']
         $nss_config    = '/etc/nslcd.conf'
         $nslcd         = true
         $configure_nss = true
         $configure_pam = false
       }else{
-        $packages      = ['nss-ldap','pam-ldap']
+        $packages      = ['nss_ldap','pam_ldap']
         $nss_config    = '/etc/ldap.conf'
         $configure_nss = true
         $configure_pam = false

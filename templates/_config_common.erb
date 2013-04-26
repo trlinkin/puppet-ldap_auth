@@ -1,0 +1,8 @@
+uri          <%= Array(@uri).join("\s") %>
+base         <%= @base %>
+<% if @scope -%>
+scope        <%= @scope %>
+<% end -%>
+<% if @ldap_version -%>
+ldap_version <%= @ldap_version -%>
+<% end -%>

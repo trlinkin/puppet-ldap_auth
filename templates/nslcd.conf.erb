@@ -1,0 +1,7 @@
+# Puppet Managed nslcd.conf
+
+<%= scope.function_template(['ldap_auth/_config_common.erb']) %>
+
+# nslcd runtime user and group
+uid nslcd
+gid ldap

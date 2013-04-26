@@ -7,7 +7,7 @@ class ldap_auth(
   $packages        = $::ldap_auth::params::packages,
   $configure_nss   = $::ldap_auth::params::configure_nss,
   $configure_pam   = $::ldap_auth::params::configure_pam,
-){
+) inherits ldap_auth::params{
 
   validate_bool($configure_nss)
   validate_bool($configure_pam)

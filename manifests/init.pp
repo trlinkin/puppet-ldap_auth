@@ -21,10 +21,10 @@ class ldap_auth(
   if $configure_nss {
     $nss_ensure  = 'file'
     $nss_service = 'running'
-    $nss_notify  = Service['nslcd']
 
     if $::ldap_auth::params::nslcd {
       $nss_content = template("ldap_auth/nslcd.conf.erb")
+      $nss_notify  = Service['nslcd,sssd']
     } else {
       $nss_content = template("ldap_auth/ldap.conf.erb")
     }
@@ -65,7 +65,7 @@ class ldap_auth(
 
   # Control nslcd service
   if $::ldap_auth::params::nslcd {
-    service {'nslcd':
+    service {['nslcd','sssd']:
       ensure => $nss_service,
     }
   }
